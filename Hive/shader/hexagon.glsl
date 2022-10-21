@@ -10,7 +10,7 @@ uniform highp float rad;
 float sdHexagon(vec2 p, float s, float r) {
     const vec3 k = vec3(-0.866025404, 0.5, 0.577350269);
     p = abs(p);
-    p -= 2.0*min(dot(k.xy,p),0.0)*k.xy;
+    p -= 2.0 * min(dot(k.xy,p),0.0)*k.xy;
     p -= vec2(clamp(p.x, -k.z*s, k.z*s), s);
     return length(p)*sign(p.y) - r;
 }

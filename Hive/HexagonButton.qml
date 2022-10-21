@@ -3,18 +3,20 @@
 // http://smr76.github.io
 
 import QtQuick 2.15
-import QtQuick.Shapes 1.15
-import QtQuick.Templates 2.15 as T
+//import QtQuick.Templates 2.15 as T
+import QtQuick.Controls 2.15 as T
 
 T.Button {
     id: control
+
+    property alias radius: background.radius
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                                 implicitContentWidth + leftPadding + rightPadding)
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                                 implicitContentHeight + topPadding + bottomPadding)
 
-//    property alias radius: background.radius
+    height: width * 0.85106
 
     padding: 6
     spacing: 6
@@ -24,6 +26,17 @@ T.Button {
     icon.color: palette.buttonText
 
     display: T.Button.TextOnly
+
+    Component.onCompleted: { this.containmentMask = mask }
+
+    QtObject {
+        id: mask
+        function contains(point: point) : bool {
+            const w = control.width, h = control.height;
+            const u = Qt.point(point.x - w/2, point.y - h/2);
+            return Math.sqrt(u.x*u.x + u.y*u.y) < h * 0.5;
+        }
+    }
 
     contentItem: Item {
         Grid {
@@ -50,8 +63,7 @@ T.Button {
                 text: control.text
                 font: control.font
                 color: !control.enabled ? 'gray' :
-                    control.highlighted ? palette.highlightedText :
-                                          palette.buttonText
+                    control.highlighted ? palette.highlightedText : palette.buttonText
                 horizontalAlignment: Text.AlignHCenter
             }
         }
