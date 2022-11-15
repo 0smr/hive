@@ -34,7 +34,7 @@ T.Button {
                       Grid.TopToBottom : Grid.LeftToRight
             layoutDirection: control.mirrored ? Qt.RightToLeft : Qt.LeftToRight
 
-            opacity: control.down || control.checked ? 0.8 : 1.0
+            opacity: control.down ? 0.8 : 1.0
 
             Image {
                 visible: control.display != T.Button.TextOnly
@@ -64,7 +64,7 @@ T.Button {
         implicitHeight: 45
 
         radius: 5
-        opacity: control.flat ? 0.5 : 1.0
+        border.width: control.flat ? 0 : 1
 
         color: Hive.alpha(border.color, control.down ? 0.3 : 0.4)
         border.color: {

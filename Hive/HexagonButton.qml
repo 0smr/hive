@@ -3,10 +3,8 @@
 // http://smr76.github.io
 
 import QtQuick 2.15
-//import QtQuick.Templates 2.15 as T
-import QtQuick.Controls 2.15 as T
 
-T.Button {
+Button {
     id: control
 
     property alias radius: background.radius
@@ -25,7 +23,7 @@ T.Button {
     icon.height: 24
     icon.color: palette.buttonText
 
-    display: T.Button.TextOnly
+    display: Button.TextOnly
 
     Component.onCompleted: { this.containmentMask = mask }
 
@@ -38,37 +36,6 @@ T.Button {
         }
     }
 
-    contentItem: Item {
-        Grid {
-            anchors.centerIn: parent
-            spacing: control.display == T.Button.TextOnly ||
-                     control.display == T.Button.IconOnly ? 0 : control.spacing
-
-            flow: control.display == T.Button.TextUnderIcon ?
-                      Grid.TopToBottom : Grid.LeftToRight
-            layoutDirection: control.mirrored ? Qt.RightToLeft : Qt.LeftToRight
-
-            opacity: control.down || control.checked ? 0.8 : 1.0
-
-            Image {
-                visible: control.display != T.Button.TextOnly
-                source: control.icon.source
-                width: control.icon.width
-                height: control.icon.height
-                cache: control.icon.cache
-            }
-
-            Text {
-                visible: control.display != T.Button.IconOnly
-                text: control.text
-                font: control.font
-                color: !control.enabled ? 'gray' :
-                    control.highlighted ? palette.highlightedText : palette.buttonText
-                horizontalAlignment: Text.AlignHCenter
-            }
-        }
-    }
-
     background: Hexagon {
         id: background
         visible: control.enabled
@@ -77,10 +44,9 @@ T.Button {
         implicitHeight: implicitWidth * 0.85106
 
         radius: 5
-        opacity: control.flat ? 0.7 : 1.0
-        strokeWidth: 1
+        strokeWidth: control.flat ? 0 : 1
 
-        color: Hive.alpha(strokeColor, control.down ? 0.3 : 0.4)
+        color: Hive.alpha(strokeColor, control.down ? 0.1 : 0.2)
         strokeColor: {
             const  _color =  control.highlighted ? palette.highlight : palette.button
             control.down ? Qt.lighter(_color, 1.1) : _color
