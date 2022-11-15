@@ -26,5 +26,6 @@
         <file>base/Hexagon.qml</file>
         <file>shader/hexagon.glsl</file>
         <file>HexagonButton.qml</file>
+        <file>TabBar.qml</file>
     </qresource>
 </RCC>
