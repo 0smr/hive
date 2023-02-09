@@ -76,8 +76,8 @@ T.Button {
             x: (control.width  - width)/2
             y: (control.height - height)/2
 
-            width: parent.width - (control.checked ? 6 : 0)
-            height: parent.height - (control.checked ? 6 : 0)
+            width: parent.width - (visible ? 6 : 0)
+            height: parent.height - (visible ? 6 : 0)
             visible: control.checked
 
             color: 'transparent'

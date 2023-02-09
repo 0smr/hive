@@ -14,6 +14,7 @@ Item {
     property real radius: 0
     property real strokeWidth: 0
     readonly property real _min: Math.min(width, height * 1.175);
+
     ShaderEffect {
         id: effect
         width: control._min

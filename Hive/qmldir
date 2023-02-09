@@ -5,6 +5,7 @@ Script              1.0 script.js
 
 singleton Hive 1.0  Hive.qml
 
+Crystal             1.0 base/Crystal.qml
 Hexagon             1.0 base/Hexagon.qml
 HexagonEffect       1.0 base/HexagonEffect.qml
 

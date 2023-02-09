@@ -84,13 +84,15 @@ T.ComboBox {
         }
     }
 
-    background: Rectangle {
+    background: Crystal {
         implicitWidth: 140
         implicitHeight: 40
 
         visible: !control.flat || control.down
-        radius: 5
-        color: palette.button
+        // radius: 5
+        color: Hive.alpha(palette.button, 0.2)
+        strokeColor: palette.button
+
         opacity: control.down ? 0.8 : 1.0
 
         Behavior on opacity { NumberAnimation { duration: 100 } }

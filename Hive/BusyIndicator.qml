@@ -1,3 +1,7 @@
+// Copyright (C) 2022 smr.
+// SPDX-License-Identifier: MIT
+// http://smr76.github.io
+
 import QtQuick 2.15
 import QtQuick.Templates 2.15 as T
 
@@ -11,14 +15,17 @@ T.BusyIndicator {
 
     visible: running
     running: false
-    padding: 6
+    padding: 1
 
     contentItem: ShaderEffect {
         id: effect
 
+        implicitWidth: 25
+        implicitHeight: 25
+
         property real strokeWidth: 0.06
         property real sweepAngle: .5
-        property color color: palette.button
+        property color color: palette.windowText
 
         fragmentShader: "
             varying highp vec2 qt_TexCoord0;

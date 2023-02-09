@@ -27,5 +27,7 @@
         <file>shader/hexagon.glsl</file>
         <file>HexagonButton.qml</file>
         <file>TabBar.qml</file>
+        <file>base/Crystal.qml</file>
+        <file>shader/crystal.glsl</file>
     </qresource>
 </RCC>
