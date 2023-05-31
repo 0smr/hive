@@ -12,8 +12,8 @@ ShaderEffect {
     property real strokeWidth: 0.1
     property color strokeColor: '#000'
     property color color: '#fff'
-    property var source: stmask
-    property var strokeSource: bmask
+    property var source
+    property var strokeSource
     property bool mask: true
     property bool strokeMask: true
     readonly property vector2d s: flatSide ? Qt.vector2d(1, 1.7320508):
@@ -23,5 +23,5 @@ ShaderEffect {
         return Qt.vector2d(width/max, height/max);
     }
 
-    fragmentShader: "qrc:/test-shader.glsl"
+    fragmentShader: "qrc:/Hive/shader/hexagonEffect.glsl"
 }

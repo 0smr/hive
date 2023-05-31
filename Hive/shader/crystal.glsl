@@ -30,7 +30,7 @@ void main() {
     float mn = 1./min(width, height);
     vec2 rat = vec2(width, height)/min(width, height);
     vec2 p = qt_TexCoord0 * rat * 2. - rat;
-    float d = box(p, rat - sw - mn, cornerCalc(qt_TexCoord0, _c) - sw/2., _radius - sw);
+    float d = box(p, rat - sw - mn, vec2(cornerCalc(qt_TexCoord0, _c) - sw/2.), _radius - sw);
     gl_FragColor = color * (1. - smoothstep(0., mn, d));
     gl_FragColor = mix(gl_FragColor, strokeColor, (1. - smoothstep(0., mn, abs(d) - sw))) * qt_Opacity;
 }
