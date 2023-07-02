@@ -26,22 +26,14 @@ T.ComboBox {
         palette.highlightedText: control.palette.highlightedText
         hoverEnabled: control.hoverEnabled
 
-        background: Rectangle {
-            radius: 5
-            color: palette.button
-            opacity: control.currentIndex === index || hovered ? 1 : 0.7
-            border.width: visualFocus ? 2 : 1
-            border.color: palette.buttonText
+        background: Crystal {
+            radius: 5/_min
+            color: Hive.alpha(Qt.lighter(palette.button, control.palette.window.hslLightness/2 + .75),
+                              control.currentIndex === index || hovered ? 0.6 : 0.4)
+            strokeWidth: visualFocus ? 2 : 1
+            strokeColor: palette.button
 
             Behavior on opacity { NumberAnimation { duration: 100 } }
-
-            Rectangle {
-                x: parent.width * 0.9
-                y: (parent.height - height)/2
-                width: 5; height: 5; radius: width
-                color: palette.buttonText
-                visible: control.currentIndex === index
-            }
         }
     }
 
@@ -89,7 +81,7 @@ T.ComboBox {
         implicitHeight: 40
 
         visible: !control.flat || control.down
-        // radius: 5
+        radius: 5/_min
         color: Hive.alpha(palette.button, 0.2)
         strokeColor: palette.button
 
@@ -99,10 +91,13 @@ T.ComboBox {
     }
 
     popup: T.Popup {
+        id: popup
         y: control.height
         topPadding: 2
         width: control.width
-        height: Math.min(contentItem.implicitHeight, control.Window.height - y - control.y) + 2
+        height: Math.min(contentItem.implicitHeight,
+                         control.Window.height,
+                         control.mapToItem(Window.window,0,0).y - 5) + 2
 
         contentItem: ListView {
             clip: true
@@ -111,7 +106,7 @@ T.ComboBox {
             spacing: 2
             currentIndex: control.highlightedIndex
             highlightMoveDuration: 0
-            T.ScrollIndicator.vertical: ScrollIndicator { }
+            T.ScrollIndicator.vertical: ScrollIndicator{}
         }
     }
 }

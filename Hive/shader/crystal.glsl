@@ -5,7 +5,7 @@ uniform highp vec4 strokeColor;
 uniform highp vec4 _c;
 uniform highp float width;
 uniform highp float height;
-uniform highp float strokeWidth;
+uniform highp float _sw;
 uniform highp float _radius;
 
 float cornerCalc(in vec2 p, in vec4 cr) {
@@ -26,11 +26,10 @@ float box(vec2 p, vec2 halfSize, vec2 cr, float rad) {
 }
 
 void main() {
-    float sw = strokeWidth/min(width, height);
     float mn = 1./min(width, height);
     vec2 rat = vec2(width, height)/min(width, height);
     vec2 p = qt_TexCoord0 * rat * 2. - rat;
-    float d = box(p, rat - sw - mn, vec2(cornerCalc(qt_TexCoord0, _c) - sw/2.), _radius - sw);
+    float d = box(p, rat - _sw - mn, vec2(cornerCalc(qt_TexCoord0, _c) - _sw/2.0), _radius - _sw);
     gl_FragColor = color * (1. - smoothstep(0., mn, d));
-    gl_FragColor = mix(gl_FragColor, strokeColor, (1. - smoothstep(0., mn, abs(d) - sw))) * qt_Opacity;
+    gl_FragColor = mix(gl_FragColor, strokeColor * ceil(_sw), (1. - smoothstep(0., mn, abs(d) - _sw/2.0))) * qt_Opacity;
 }

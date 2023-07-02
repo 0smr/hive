@@ -12,7 +12,7 @@ ShaderEffect {
     id: control
 
     property real radius: 0.2
-    property real strokeWidth: 0.5
+    property real strokeWidth: 1
 
     property color color: Hive.alpha(palette.button, 0.2)
     property color strokeColor: palette.button
@@ -20,6 +20,7 @@ ShaderEffect {
     property vector4d corners: Qt.vector4d(10, 10, 10, 10)
 
     readonly property real _min: Math.min(width, height)
+    readonly property real _sw: strokeWidth/_min
     readonly property vector4d _c: Qt.vector4d(corners.x/_min, corners.y/_min,
                                                corners.z/_min, corners.w/_min)
     readonly property real _radius: {
