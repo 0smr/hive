@@ -17,7 +17,7 @@ T.Switch {
     padding: 6
     spacing: 6
 
-    indicator: Rectangle {
+    indicator: Crystal {
         implicitWidth: 50
         implicitHeight: 25
 
@@ -30,24 +30,23 @@ T.Switch {
         y: control.topPadding + (control.availableHeight - height) / 2
 
         color: 'transparent'
-        radius: 5
-        border.color: control.visualFocus ? palette.highlight : palette.button
+        radius: 5/_min
+        strokeColor: control.visualFocus ? palette.highlight : palette.button
+        corners: Qt.vector4d(13, 8, 13, 8)
 
-        Rectangle {
+        Crystal {
             id: ibox
             x: Math.min(Math.max(y, control.visualPosition * parent.width - height/2), parent.width - height - y)
             y: 3
 
-            border.color: palette.button
+            strokeColor: palette.button
             color: Hive.alpha(palette.button, control.down ? 0.3 : 0.4)
 
-            width: {
-                let pos = Math.abs(0.5 - (x-y)/(parent.implicitWidth - height - 2 * y));
-                height + 8 - pos * 8 * 2
-            }
+            width: height
             height: control.indicator.height - 6
 
-            radius: 3
+            radius: 5/_min
+            corners: Qt.vector4d(10, 5, 10, 5)
 
             Behavior on x {
                 enabled: !control.down

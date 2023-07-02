@@ -8,7 +8,7 @@ import Hive 1.0
 ApplicationWindow {
     id: window
 
-    width: 240
+    width: 260
     height: 515
     visible: true
 
@@ -63,11 +63,11 @@ ApplicationWindow {
         contentItem: Row {
             spacing: 5
             ButtonColor { palette{button: '#48abff';buttonText: '#f5f6f7'}}
+            ButtonColor { palette{button: '#1d1c21';buttonText: '#f5f6f7'}}
+            ButtonColor { palette{button: '#edc9aa';buttonText: '#f5f6f7'}}
             ButtonColor { palette{button: '#ffd166';buttonText: '#1d1c21'}}
             ButtonColor { palette{button: '#06d6a0';buttonText: '#1d1c21'}}
             ButtonColor { palette{button: '#d5b9ff';buttonText: '#1d1c21'}}
-            ButtonColor { palette{button: '#1d1c21';buttonText: '#f5f6f7'}}
-            ButtonColor { palette{button: '#edc9aa';buttonText: '#1d1c21'}}
             Item { width: 15; height: parent.height }
             BackColor { palette {button: '#f5f6f7'; buttonText: '#343536'}}
             BackColor { palette {button: '#1d1c21'; buttonText: '#f5f6f7'}}

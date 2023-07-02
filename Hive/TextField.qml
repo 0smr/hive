@@ -41,25 +41,22 @@ T.TextField {
         renderType: control.renderType
     }
 
-    background: Rectangle {
+    background: Crystal {
         implicitWidth: 200
         implicitHeight: 40
 
-        opacity: control.activeFocus ? 1 : 0.5
+        property real _ecr: control.activeFocus ? 10 : 20
+
+        opacity: control.activeFocus ? 1 : 0.8
         color: Qt.lighter(palette.window, palette.window.hslLightness * 2)
 
-        border.color: Qt.lighter(palette.button, 0.5 + palette.window.hslLightness)
-        border.width: 0.5
+        strokeColor: palette.button
+        strokeWidth: 1
+        radius: 5/_min
+
+        corners: Qt.vector4d(_ecr - 10, 10, _ecr, 0)
 
         Behavior on opacity { NumberAnimation { duration: 100 } }
-
-        Rectangle {
-            height: parent.height
-            width: control.activeFocus ? 3 : 1
-
-            color: control.enabled ? palette.button : '#00000055'
-
-            Behavior on width { NumberAnimation { duration: 100 } }
-        }
+        Behavior on _ecr { NumberAnimation { duration: 100 } }
     }
 }

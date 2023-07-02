@@ -4,6 +4,7 @@
 
 import QtQuick 2.15
 import QtQuick.Templates 2.15  as T
+import Hive 1.0
 
 T.ProgressBar {
     id: control
@@ -23,24 +24,26 @@ T.ProgressBar {
     }
 
     contentItem: Item {
-        Rectangle {
+        Crystal {
+            property real _right: Math.max(0, width - parent.width + 8)
+
             x: 1; y: 1
             width: control.position * (parent.width - 2)
             height: parent.height - 2
 
-            radius: 2
+            radius: .2
+            strokeColor: palette.button
             color: Hive.alpha(palette.button, 0.4)
-            border.color: palette.button
+            corners: Qt.vector4d(6, _right, _right, 6)
         }
     }
 
-    background: Rectangle {
+    background:  Crystal {
         implicitWidth: orient.horizontal ? 200 : 18
         implicitHeight: orient.vertical ? 200 : 18
 
+        strokeColor: palette.button
         color: 'transparent'
-        radius: 5
-
-        border.color: palette.button
+        radius: .2
     }
 }

@@ -15,10 +15,13 @@ T.Frame {
 
     padding: 6
 
-    background: Rectangle {
+    background: Crystal {
         color: 'transparent'
-        radius: 3
-        border.width: 1
-        border.color: palette.button
+        radius: 10/_min
+        strokeColor: palette.button
+        corners: {
+            const _x = 25 + control.padding, _y = 15 + control.padding;
+            return Qt.vector4d(_x , _y, _x , _y);
+        }
     }
 }

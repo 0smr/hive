@@ -41,25 +41,22 @@ T.TextArea {
         renderType: control.renderType
     }
 
-    background: Rectangle {
+    background: Crystal {
         implicitWidth: 200
         implicitHeight: 40
 
-        opacity: control.activeFocus ? 1 : 0.5
+        property real _ecr: control.activeFocus ? 10 : 20
+
+        opacity: control.activeFocus ? 1 : 0.8
         color: Qt.lighter(palette.window, palette.window.hslLightness * 2)
 
-        border.color: Qt.lighter(palette.button, 0.5 + palette.window.hslLightness)
-        border.width: 0.5
+        strokeColor: palette.button
+        strokeWidth: 1
+        radius: 5/_min
+
+        corners: Qt.vector4d(_ecr, 10, _ecr, 10)
 
         Behavior on opacity { NumberAnimation { duration: 100 } }
-
-        Rectangle {
-            y: parent.height - height
-            height: control.activeFocus ? 3 : 1
-            width: parent.width
-            color: control.enabled ? palette.button : '#aaa'
-
-            Behavior on height { NumberAnimation { duration: 100 } }
-        }
+        Behavior on _ecr { NumberAnimation { duration: 100 } }
     }
 }

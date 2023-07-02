@@ -41,16 +41,17 @@ T.Slider {
         height: control.horizontal ? implicitHeight : control.availableHeight
 
         Rectangle {
-            width: control.handle.x - 5
+            x: 1
+            width: control.handle.x - 6
             color: palette.button
             height: parent.height
         }
 
         Rectangle {
-            x: parent.width - width + 1
+            x: parent.width - width - 1
             y: 0
 
-            width: parent.width - control.handle.x - 12
+            width: parent.width - control.handle.x - 14
             color: palette.button
             height: parent.height
         }

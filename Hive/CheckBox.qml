@@ -17,8 +17,8 @@ T.CheckBox {
     padding: 6
     spacing: 6
 
-    indicator: Rectangle {
-        implicitWidth: 25
+    indicator: Hexagon {
+        implicitWidth: 25 * 1.175
         implicitHeight: 25
 
         x: control.text ?
@@ -31,26 +31,28 @@ T.CheckBox {
 
         radius: 3
         color: 'transparent'
-        border.color: control.visualFocus ? palette.highlight : palette.button
+        strokeColor: control.visualFocus ? palette.highlight : palette.button
+        strokeWidth: 1
 
-        Rectangle {
+        Hexagon {
             id: ibox
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
 
-            border.color: palette.button
-            color: Hive.alpha(palette.button, control.down ? 0.3 : 0.4)
 
-            radius: 2
+            color: Hive.alpha(palette.button, control.down ? 0.3 : 0.4)
+            strokeColor: palette.button
+            strokeWidth: 1
+
+            radius: 3
+
+            width: parent.width * 0.75
+            height: parent.height * 0.75
 
             states:[
                 State {
                     when: control.checkState === Qt.Checked
-                    PropertyChanges {
-                        target: ibox
-                        width: control.indicator.width - 6
-                        height: control.indicator.height - 6
-                    }
+                    PropertyChanges { target: ibox }
                 },
                 State {
                     when: control.checkState === Qt.Unchecked
@@ -60,8 +62,10 @@ T.CheckBox {
                     when: control.checkState === Qt.PartiallyChecked
                     PropertyChanges {
                         target: ibox
-                        width: control.indicator.width - 6
-                        height: control.indicator.height/3
+                        rotation: 90
+                        width: parent.width * 0.6
+                        height: parent.height * 0.6
+                        color: 'transparent'
                     }
                 }
             ]
@@ -69,7 +73,7 @@ T.CheckBox {
             transitions: [
                 Transition {
                     from: "*"; to: "*"
-                    NumberAnimation { properties: "width, height"; duration: 100 }
+                    NumberAnimation { properties: "width,height,rotation"; duration: 150 }
                 }
             ]
         }

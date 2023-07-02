@@ -46,22 +46,11 @@ T.Tumbler {
         }
     }
 
-    background: Rectangle {
+    background: Crystal {
         implicitWidth: 60
         implicitHeight: 80
-        radius: 5
-        color: palette.button
-
-        Rectangle {
-            y: (parent.height - height)/2
-            x: (parent.width - width)/2
-            width: parent.width * 0.7
-            height: control.currentItem.height
-            radius: 3
-            opacity: Math.abs(pathview.offset % 1 - 0.5) * 2
-            border.width: 1
-            border.color: palette.window
-            color: 'transparent'
-        }
+        radius: 5/_min
+        color: Hive.alpha(strokeColor, control.down ? 0.3 : control.checked ? 0.4 : 0.2)
+        corners: Qt.vector4d(20,10,20,10)
     }
 }

@@ -56,36 +56,26 @@ T.Button {
         }
     }
 
-    background: Rectangle {
+    background: Crystal {
         id: background
+
+        property real _ycorner: Math.min(_min * 0.5, 25)
+        property real _xcorner: Math.min(control.checked? _ycorner : _min * 0.2, 25)
         visible: control.enabled
 
         implicitWidth: 45
         implicitHeight: 45
 
-        radius: 5
-        border.width: control.flat ? 0 : 1
+        radius: 7/_min
+        strokeWidth: control.flat ? 0 : 1
+        corners: Qt.vector4d(_ycorner, _xcorner, _ycorner, _xcorner)
 
-        color: Hive.alpha(border.color, control.down ? 0.3 : 0.4)
-        border.color: {
+        color: Hive.alpha(strokeColor, control.down ? 0.3 : control.checked ? 0.4 : 0.2)
+        strokeColor: {
             const  _color =  control.highlighted ? palette.highlight : palette.button
             control.down ? Qt.lighter(_color, 1.1) : _color
         }
 
-        Rectangle {
-            x: (control.width  - width)/2
-            y: (control.height - height)/2
-
-            width: parent.width - (visible ? 6 : 0)
-            height: parent.height - (visible ? 6 : 0)
-            visible: control.checked
-
-            color: 'transparent'
-            border.color: parent.border.color
-            radius: 3
-
-            Behavior on width { NumberAnimation { }}
-            Behavior on height { NumberAnimation { }}
-        }
+        Behavior on _xcorner { NumberAnimation {duration: 150} }
     }
 }
