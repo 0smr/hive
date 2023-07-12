@@ -4,22 +4,17 @@
 <a href="https://www.blockchain.com/bch/address/bitcoincash:qrnwtxsk79kv6mt2hv8zdxy3phkqpkmcxgjzqktwa3">
 <img src="https://img.shields.io/badge/BCH-Donate-f0992e?logo=BitcoinCash&logoColor=f0992e" alt="BCH donate"></a></p>
 
-**Hive** QtQuick2/QML theme.
+**Hive** QtQuick2/QML theme, A hexagon-based style for essential QML controls.
 
 *If you liked these components, please consider givin a star :star2:.*
 
-<!-- ## Preview -->
-<!-- <div align="center">&nbsp;
-<img src="https://img.shields.io/badge/light-blue-49aaff">
-<img src="https://img.shields.io/badge/dark-green-08d7a1"><br>
-<img src="extra/preview/preview-1.webp" width="45%">
-<img src="extra/preview/preview-2.webp" width="45%">
-</div> -->
+## Preview
+<div align="center">&nbsp;
+<img src="docs/preview.webp" width="45%">
+</div>
 
 ## How to use
-> **Warning**<br>
-> This components have only been tested on **Qt version 5.15.2** and *Windows OS* at *3840x2160 resolution* with a *scaling factor of 250 percent*; ***USAGE OF THIS COMPONENTS CARRIES NO WARRANTY***.
-> <br>&nbsp;
+> **NOTE**: *There are some shaders used in this component that are currently incompatible with Qt6.*
 
 ### Usage
 
@@ -44,25 +39,20 @@ If you are confused, please refer to [example-1](example/example-1/) for a clear
 
 ## Components
 
-<details open>
-<summary>Pending</summary>
-
-- [x] Button :construction:
-- [x] ProgressBar :construction:
-- [x] CheckBox :construction:
-- [x] Switch :construction:
-- [x] Radio Button
-- [x] Slider
-- [x] RangeSlider
-- [x] SpinBox
-- [x] Dial
-- [x] BusyIndicator
-- [ ] Tumbler
-- [ ] TextArea
-- [ ] TextField
-- [ ] ComboBox
-
-</details>
+- Button
+- ProgressBar
+- CheckBox
+- Switch
+- Radio Button
+- Slider
+- RangeSlider
+- SpinBox
+- Dial
+- BusyIndicator
+- Tumbler
+- TextArea
+- TextField
+- ComboBox
 
 ## Issues
 
