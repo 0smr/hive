@@ -1,3 +1,8 @@
+#ifdef GL_ES
+    precision highp float;
+    precision highp int;
+#endif
+
 uniform highp float qt_Opacity;
 varying highp vec2 qt_TexCoord0;
 uniform highp vec2 ratio;
@@ -16,10 +21,10 @@ float sdHexagon(vec2 p, float s, float r) {
 }
 
 void main() {
-    vec2 u = qt_TexCoord0/ratio.yx - 0.5 - vec2(0.086,0);
+    vec2 u = qt_TexCoord0/ratio.yx - 0.5 - vec2(0.086, 0.0);
     float eDist = sdHexagon(u, 0.47 - rad, -0.5 + rad);
-    gl_FragColor = mix(color, vec4(0.), smoothstep(0., 1./mx, eDist - .5));
+    gl_FragColor = mix(color, vec4(0.0), smoothstep(0., 1.0/mx, eDist - 0.5));
     gl_FragColor = mix(sc, gl_FragColor,
-                       smoothstep(0., 1./mx, abs(eDist - .5 + sw) - sw + 0.5/mx));
+                       smoothstep(0.0, 1.0/mx, abs(eDist - 0.5 + sw) - sw + 0.5/mx));
     gl_FragColor *= qt_Opacity;
 }
