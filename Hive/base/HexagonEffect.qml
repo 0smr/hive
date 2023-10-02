@@ -7,8 +7,8 @@ import QtQuick 2.15
 ShaderEffect {
     id: effect
 
-    property int size: Math.min(width, height)/8
-    property bool flatSide: !false
+    property real size: Math.min(width, height)/5
+    property real flatSide: !false
     property real strokeWidth: 0.1
     property color strokeColor: '#000'
     property color color: '#fff'

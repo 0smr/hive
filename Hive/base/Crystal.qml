@@ -21,8 +21,7 @@ ShaderEffect {
 
     readonly property real _min: Math.min(width, height)
     readonly property real _sw: strokeWidth/_min
-    readonly property vector4d _c: Qt.vector4d(corners.x/_min, corners.y/_min,
-                                               corners.z/_min, corners.w/_min)
+    readonly property vector4d _c: corners.times(1/_min)
     readonly property real _radius: {
         const max = Math.min(_c.x,_c.y,_c.z,_c.w);
         Math.min(radius, max * 2., 2 - max * 2.);
